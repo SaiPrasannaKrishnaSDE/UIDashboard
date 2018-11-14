@@ -6,7 +6,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -15,7 +15,9 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     PagesModule,
     ChartsModule,
-    routing
+    routing,
+    NgbModule,
+    FormsModule
   ],
   declarations: [
     AppComponent

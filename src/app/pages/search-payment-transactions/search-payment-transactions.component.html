@@ -1,0 +1,206 @@
+<div class="container">
+  <div class="row col-md-12">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Case Number:</label>
+      <input type="text" class="form-control col-md-7" placeholder="Search by Case Number">
+    </div>
+    <div class="col-md-6 row">
+      <label class="col-md-6" style="margin-top:1%">Coverage Month:</label>
+      <input type="text" class="form-control col-md-6" placeholder="Search by Coverage Month">
+    </div>
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Issuer Id:</label>
+      <input type="text" class="form-control col-md-7" placeholder="Search by Issuer Id">
+    </div>
+    <div class="col-md-6 row">
+      <label class="col-md-6" style="margin-top:1%">Processed By IEES:</label>
+      <input type="text" class="form-control col-md-6" placeholder="Search..">
+    </div>
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Create Date:</label>
+      <input type="date" class="form-control col-md-7">
+    </div>
+    <div class="col-md-6 row">
+      <label class="col-md-6" style="margin-top:1%"></label>
+      <button type="button" class="btn btn-info col-md-6" (click)="GetInvoiceTransaction()">Search</button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<table class="table table-bordered tableFont" *ngIf="showSearchResults">
+  <thead style="text-align:center" class="table-condensed">
+    <tr [ngClass]="'table-'+userName"> 
+      <th>Case Number</th>
+      <th>Coverage Month</th>
+      <th>Premium Amount</th>
+      <th>Processed By IEES</th>
+      <th>Transaction Id</th>
+      <th>Create Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let txn of paymentFilteredRecords;" style="text-align: center;cursor: pointer;" (click)="openModal(content,txn.TransactionId)"
+      data-toggle="modal" data-target="#myModal">
+      <td>
+        {{txn.CaseNumber}}
+      </td>
+      <td>
+        {{txn.CoverageMonth | date: 'dd/MM/yyyy'}}
+      </td>
+      <td>
+        {{txn.PremiumAmount}}
+      </td>
+      <td>
+        {{txn.ProcessedByIEES?'Yes':'No'}}
+      </td>
+      <td>
+        {{txn.TransactionId}}
+      </td>
+      <td>
+        {{txn.CreateDate | date: 'dd/MM/yyyy'}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal class="tableFont">
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Transaction Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <table class="table table-bordered table-sm">
+          <thead>
+              <tr [ngClass]="'table-'+userName">
+                  <th>#</th>
+                  <th>Transaction Type</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of modalTransactionDetails; let j=index">
+                  <td>{{j+1}}</td>
+                  <td>
+                      <b>{{item.TransactionType}}</b>
+                      <div [hidden]="item.hidden">
+                          <table class="table table-sm">
+                              <!-- Eligibility Information -->
+                              <tbody *ngIf="item.TransactionType == 'Eligibility'" class="fixedHeightModalTableRows">
+                                  <tr>
+                                      <td><small><b>Maid Card Number</b></small></td>
+                                      <td style="text-align: center"><small>{{item.MaidCardNumber}}</small></td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>CaseNumber</b></small></td>
+                                      <td style="text-align: center"><small>{{item.CaseNumber}}</small></td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Processed By MMIS</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              <input type="checkbox" [checked]="item.ProcessedByMMIS" (change)="item.ProcessedByMMIS = !item.ProcessedByMMIS" />
+                                          </small>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Processed By MCO</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              <input type="checkbox" [checked]="item.ProcessedByMCO" (change)="item.ProcessedByMCO = !item.ProcessedByMCO" />
+                                          </small>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                              <!-- Invoice Infromation -->
+                              <tbody *ngIf="item.TransactionType == 'Invoice'" class="fixedHeightModalTableRows">
+                                  <tr>
+                                      <td><small><b>CaseNumber</b></small></td>
+                                      <td style="text-align: center"><small>{{item.CaseNumber}}</small></td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Coverage Month</b></small></td>
+                                      <td style="text-align: center"><small>{{item.CoverageMonth | date: 'dd/MM/yyyy'}}</small></td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Payment Status</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              <input type="checkbox" [checked]="item.PaymentStatus" (change)="item.PaymentStatus = !item.PaymentStatus" />
+                                          </small>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Processed By IEES</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              <input type="checkbox" [checked]="item.ProcessedByIEES" (change)="item.ProcessedByIEES = !item.ProcessedByIEES" />
+                                          </small>
+                                      </td>
+                                  </tr>
+                              </tbody>
+
+                              <!-- Payment Infromation -->
+                              <tbody *ngIf="item.TransactionType == 'Payment'" class="fixedHeightModalTableRows">
+                                  <tr>
+                                      <td><small><b>CaseNumber</b></small></td>
+                                      <td style="text-align: center"><small>{{item.CaseNumber}}</small></td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Invoice Date</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              {{item.InvoiceDate | date: 'dd/MM/yyyy'}}
+                                          </small>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Premium Amount</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              {{item.PremiumAmount}}
+                                          </small>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Payment Status</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              <input type="checkbox" [checked]="item.PaymentStatus" (change)="item.PaymentStatus = !item.PaymentStatus" />
+                                          </small>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><small><b>Processed By IEES</b></small></td>
+                                      <td style="text-align: center">
+                                          <small>
+                                              <input type="checkbox" [checked]="item.ProcessedByIEES" (change)="item.ProcessedByIEES = !item.ProcessedByIEES" />
+                                          </small>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </td>
+                  <td style="text-align: center">
+                    <a [hidden]="!item.hidden"  class="Pointer smallButton" (click)="ShowDetails(item)">View
+                        More</a>
+                    <a [hidden]="item.hidden" class="Pointer smallButton" (click)="HideDetails(item)">View Less</a>
+                      <br>
+                      <button [hidden]="item.hidden" class="btn btn-info btn-sm" (click)="HideDetails(item)" style="margin-top: 35%">Submit</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-danger btn-sm" (click)="modal.close()">Dismiss</button>
+  </div>
+</ng-template>

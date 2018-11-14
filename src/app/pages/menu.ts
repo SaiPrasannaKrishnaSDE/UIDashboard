@@ -5,17 +5,17 @@ export let MENU_ITEM_MMIS = [
         icon: 'dashboard'
     },
     {
-        path: 'editor',
+        path: 'search-eligibility-transactions',
         title: 'Search Eligibility Transactions',
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'search-payment-transactions',
         title: 'Search Payment Transactions',
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'search-invoice-transactions',
         title: 'Search Invoice Transactions',
         icon: 'search'
     }
@@ -28,17 +28,17 @@ export let MENU_ITEM_MMIS = [
         icon: 'dashboard'
     },
     {
-        path: 'editor',
+        path: 'search-eligibility-transactions',
         title: 'Search Eligibility Transactions',
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'search-payment-transactions',
         title: 'Search Payment Transactions',
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'search-invoice-transactions',
         title: 'Search Invoice Transactions',
         icon: 'search'
     },
@@ -56,17 +56,17 @@ export let MENU_ITEM_MMIS = [
         icon: 'dashboard'
     },
     {
-        path: 'editor',
+        path: 'search-eligibility-transactions',
         title: 'Search Eligibility Transactions',
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'search-payment-transactions',
         title: 'Search Payment Transactions',
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'search-invoice-transactions',
         title: 'Search Invoice Transactions',
         icon: 'search'
     },
