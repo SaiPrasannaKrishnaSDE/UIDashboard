@@ -19,6 +19,9 @@ export const childRoutes: Routes = [
             { path: 'search-eligibility-transactions', loadChildren: './search-eligibility-transactions/search-eligibility-transactions.module#SearchEligibilityTransactionsModule'},
             { path: 'search-payment-transactions', loadChildren: './search-payment-transactions/search-payment-transactions.module#SearchPaymentTransactionsModule' },
             { path: 'search-invoice-transactions', loadChildren: './search-invoice-transactions/search-invoice-transactions.module#SearchInvoiceTransactionsModule' },
+            { path: 'submit-payment-transactions', loadChildren: './submit-payment-transactions/submit-payment-transactions.module#SubmitPaymentTransactionsModule' },
+            { path: 'submit-invoice-transactions', loadChildren: './submit-invoice-transactions/submit-invoice-transactions.module#SubmitInvoiceTransactionsModule' },
+        
         ]
     }
 ];

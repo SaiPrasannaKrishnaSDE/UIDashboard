@@ -43,7 +43,7 @@ export let MENU_ITEM_MMIS = [
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'submit-eligibility-transactions',
         title: 'Submit Eligibility Transactions',
         icon: 'pencil'
     }
@@ -71,12 +71,12 @@ export let MENU_ITEM_MMIS = [
         icon: 'search'
     },
     {
-        path: 'editor',
+        path: 'submit-invoice-transactions',
         title: 'Submit Invoice Transactions',
         icon: 'pencil'
     },
     {
-        path: 'editor',
+        path: 'submit-payment-transactions',
         title: 'Submit Payment Transactions',
         icon: 'pencil'
     }

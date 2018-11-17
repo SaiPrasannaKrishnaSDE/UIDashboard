@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row col-md-12">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Transaction Id</label>
+      <input type="text" readonly value="{{id}}" class="form-control col-md-7">
+    </div>
+    <div class="col-md-6 row">
+
+    </div>
+    
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+      <div class="col-md-6 row">
+          <label class="col-md-5" style="margin-top:1%">Transaction Type</label>
+          <input type="text" class="form-control col-md-7">
+        </div>
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Case Number</label>
+      <input type="text" class="form-control col-md-7">
+    </div>
+    
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+      <div class="col-md-6 row">
+          <label class="col-md-5" style="margin-top:1%">Coverage Month</label>
+          <input type="date" class="form-control col-md-7">
+        </div>
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Issuer Id</label>
+      <!-- <input type="text" class="form-control col-md-7"> -->
+      <select class="form-control col-md-7">
+        <option *ngFor="let item of issuerList" [value]="item.id">
+          {{item.value}}
+        </option>
+      </select>
+    </div>
+    
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Invoice Date</label>
+      <input type="date" class="form-control col-md-7">
+    </div>
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Due Date</label>
+      <input type="date" class="form-control col-md-7">
+    </div>
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Premium Amount</label>
+      <input type="text" class="form-control col-md-7">
+    </div>
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Payment Status</label>
+      <input type="text" class="form-control col-md-7">
+    </div>
+  </div>
+  <div class="row col-md-12" style="margin-top: 5px">
+    <div class="col-md-6 row">
+      <label class="col-md-5" style="margin-top:1%">Payment Date</label>
+      <input type="date" class="form-control col-md-7">
+    </div>
+    <div class="col-md-6 row">
+        <label class="col-md-5" style="margin-top:1%">Processed By IEES</label>
+        <select class="form-control col-md-7">
+          <option *ngFor="let item of processingStatus" [value]="item.id">
+            {{item.value}}
+          </option>
+        </select>
+      </div>
+  </div>
+
+  <div class="row col-md-12" style="margin-top: 10px">
+      <div class="col-md-6 row">
+       </div>
+       <div class="col-md-6 row">
+         <label class="col-md-5" style="margin-top:1%"></label>
+          <button type="button" class="btn btn-info col-md-4">Submit</button>
+     
+        </div>
+       
+    </div>
+</div>
+
+<hr>
