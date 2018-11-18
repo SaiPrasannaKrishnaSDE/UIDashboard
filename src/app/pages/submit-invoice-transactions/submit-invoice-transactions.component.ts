@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Guid } from "guid-typescript";
-import {Property} from '../property'
+import {Property} from '../property';
 import { InvoiceEntity } from '../entity';
 
 @Component({
