@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './submit-payment-transactions.routing';
 import { SharedModule } from '../../shared/shared.module';
-import { SubmitPaymentTransactionsComponent } from './submit-payment-transactions.component';
+import { SubmitPaymentTransactionsComponent } from './submit-payment-transactions.component'
 
 
 @NgModule({

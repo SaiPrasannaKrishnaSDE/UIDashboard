@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { routing } from './submit-invoice-transactions.routing';
+import { routing } from './submit-eligibility-transactions.routing';
 import { SharedModule } from '../../shared/shared.module';
-import { SubmitInvoiceTransactionsComponent } from './submit-invoice-transactions.component'
+import { SubmitEligibilityTransactionsComponent } from './submit-eligibility-transactions.component'
 
 
 @NgModule({
@@ -15,6 +15,6 @@ import { SubmitInvoiceTransactionsComponent } from './submit-invoice-transaction
         routing
     ],
     declarations: [
-        SubmitInvoiceTransactionsComponent    ]
+        SubmitEligibilityTransactionsComponent    ]
 })
-export class SubmitInvoiceTransactionsModule { }
+export class SubmitEligibilityTransactionsModule { }
