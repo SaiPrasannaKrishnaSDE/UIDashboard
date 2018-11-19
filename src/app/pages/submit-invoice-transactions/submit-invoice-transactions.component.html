@@ -12,7 +12,7 @@
       </div>
       <div class="col-md-6 row">
         <label for="transactionType" class="col-md-5 control-label" style="margin-top:1%">Transaction Type</label>
-        <input required type="text" class="form-control col-md-7" name="transactionType" [(ngModel)]="invoiceEntity.transactionType"
+        <input readonly required type="text" class="form-control col-md-7" name="transactionType" [(ngModel)]="invoiceEntity.transactionType"
           #transactionTypeControl="ngModel" [ngClass]="{ 'is-invalid': f.submitted && transactionTypeControl.invalid }">
         <span class="col-md-5"></span>
         <span *ngIf="f.submitted && transactionTypeControl.invalid" class="col-md-7 invalid-feedback">

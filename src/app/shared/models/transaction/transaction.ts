@@ -4,6 +4,6 @@ import TransactionType from './transaction-type.enum';
 export interface Transaction  {
 readonly transactionId: Guid;
 readonly transactionType: TransactionType;
-readonly casenumber: String;
+readonly caseNumber: String;
 }
 

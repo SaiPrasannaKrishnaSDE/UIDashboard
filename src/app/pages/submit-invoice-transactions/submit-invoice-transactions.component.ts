@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Guid } from "guid-typescript";
 import {Property} from '../property';
-import { InvoiceEntity } from '../entity';
+import { PaymentTransaction } from 'src/app/shared/models/transaction/payment';
+import { IssuerType } from 'src/app/shared/models/transaction/issuer-type.enum';
+import TransactionType from 'src/app/shared/models/transaction/transaction-type.enum';
+
 
 @Component({
   selector: 'app-submit-invoice-transactions',
@@ -12,32 +15,34 @@ export class SubmitInvoiceTransactionsComponent implements OnInit {
 
   issuerList : Property[];
   processingStatus : Property[];
+  invoiceEntity : PaymentTransaction;
 
-  invoiceEntity : InvoiceEntity = {
-    transactionId : null,
-    transactionType : null,
-    caseNumber : null,
-    coverageMonth : null,
-    issuerId : null,
-    invoiceDate : null,
-    dueDate : null,
-    premiumAmount : null,
-    paymentStatus : null,
-    processedByIEES : null,
-  }
+ 
 
   constructor() { 
     
   }
 
   ngOnInit() {
-    this.invoiceEntity.transactionId = Guid.create();
+    this.invoiceEntity = {
+      transactionId : Guid.create(),
+      transactionType : TransactionType.Invoice,
+      caseNumber : undefined,
+      coverageMonth : undefined,
+      issuerId : undefined,
+      invoiceDate : undefined,
+      dueDate : undefined,
+      premiumAmount : undefined,
+      paymentStatus : undefined,
+      processedByIEES : undefined,
+    }
+
     this.issuerList = [
-      {id : 70001, value : 70001 },
-      {id : 70002, value : 70002 },
-      {id : 70003, value : 70003 },
-      {id : 70004, value : 70004 },
-      {id : 70005, value : 70005 }
+      {id : IssuerType.Aetna, value : IssuerType[IssuerType.Aetna] },
+      {id : IssuerType.Passport, value : IssuerType[IssuerType.Passport] },
+      {id : IssuerType.Wellcare, value : IssuerType[IssuerType.Wellcare] },
+      {id : IssuerType.HumanaCareSource, value : IssuerType[IssuerType.HumanaCareSource] },
+      {id : IssuerType.Anthem, value : IssuerType[IssuerType.Anthem] }
     ];
 
     this.processingStatus = [
@@ -46,10 +51,8 @@ export class SubmitInvoiceTransactionsComponent implements OnInit {
     ]
   }
 
-  submitInvoiceTransaction(newInvoiceEntity : InvoiceEntity) : void
+  submitInvoiceTransaction(newInvoiceEntity : PaymentTransaction) : void
   {
     console.log(newInvoiceEntity);
   }
-
-
 }

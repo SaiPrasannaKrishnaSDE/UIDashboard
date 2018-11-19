@@ -1,6 +1,6 @@
  enum TransactionType {
-    Eligibility = 0,
-    Invoice = 1,
-    Payment = 2
+    Eligibility = "Eligibility",
+    Invoice = "Invoice",
+    Payment = "Payment"
 }
 export default TransactionType;

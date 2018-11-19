@@ -7,6 +7,6 @@ export interface PaymentTransaction extends Transaction {
     dueDate: Date;
     premiumAmount: Number;
     paymentStatus: Boolean;
-    paymentdate?: Date;
-    processedbyiees: Boolean;
+    paymentDate?: Date;
+    processedByIEES: Boolean;
 }

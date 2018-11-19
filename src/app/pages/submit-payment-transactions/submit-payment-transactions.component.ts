@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractFormGroupDirective } from '@angular/forms';
 import {Guid } from "guid-typescript";
 import {Property} from '../property'
-import { PaymentEntity } from '../entity';
+import { IssuerType } from 'src/app/shared/models/transaction/issuer-type.enum';
+import { PaymentTransaction } from 'src/app/shared/models/transaction/payment';
+import TransactionType from 'src/app/shared/models/transaction/transaction-type.enum';
 
 @Component({
   selector: 'app-submit-payment-transactions',
@@ -16,33 +18,33 @@ export class SubmitPaymentTransactionsComponent implements OnInit {
   issuerList : Property[];
   processingStatus : Property[];
 
-  paymentEntity : PaymentEntity = {
-    transactionId : null,
-    transactionType : null,
-    caseNumber : null,
-    coverageMonth : null,
-    issuerId : null,
-    invoiceDate : null,
-    dueDate : null,
-    premiumAmount : null,
-    paymentStatus : null,
-    paymentDate : null,
-    processedByIEES : null,
-  }
+  paymentEntity : PaymentTransaction; 
 
   constructor() { 
     
   }
 
   ngOnInit() {
-    this.paymentEntity.transactionId = Guid.create();
+    this.paymentEntity = {
+      transactionId : Guid.create(),
+      transactionType : TransactionType.Payment,
+      caseNumber : undefined,
+      coverageMonth : undefined,
+      issuerId : undefined,
+      invoiceDate : undefined,
+      dueDate : undefined,
+      premiumAmount : undefined,
+      paymentStatus : undefined,
+      paymentDate : undefined,
+      processedByIEES : undefined,
+    }
 
     this.issuerList = [
-      {id : 70001, value : 70001 },
-      {id : 70002, value : 70002 },
-      {id : 70003, value : 70003 },
-      {id : 70004, value : 70004 },
-      {id : 70005, value : 70005 }
+      {id : IssuerType.Aetna, value : IssuerType[IssuerType.Aetna] },
+      {id : IssuerType.Passport, value : IssuerType[IssuerType.Passport] },
+      {id : IssuerType.Wellcare, value : IssuerType[IssuerType.Wellcare] },
+      {id : IssuerType.HumanaCareSource, value : IssuerType[IssuerType.HumanaCareSource] },
+      {id : IssuerType.Anthem, value : IssuerType[IssuerType.Anthem] }
     ];
 
     this.processingStatus = [
@@ -50,7 +52,7 @@ export class SubmitPaymentTransactionsComponent implements OnInit {
       {id : 'N', value : 'No' },
     ]
   }
-submitPaymentTransaction(newPaymentEntity : PaymentEntity) : void
+submitPaymentTransaction(newPaymentEntity : PaymentTransaction) : void
   {
     console.log(newPaymentEntity);
   }
