@@ -5,6 +5,7 @@ import {Property} from '../property'
 import { IssuerType } from 'src/app/shared/models/transaction/issuer-type.enum';
 import { PaymentTransaction } from 'src/app/shared/models/transaction/payment';
 import TransactionType from 'src/app/shared/models/transaction/transaction-type.enum';
+import { PaymentStatus } from 'src/app/shared/models/transaction/payment-status.enum';
 
 @Component({
   selector: 'app-submit-payment-transactions',
@@ -19,6 +20,8 @@ export class SubmitPaymentTransactionsComponent implements OnInit {
   processingStatus : Property[];
 
   paymentEntity : PaymentTransaction; 
+
+  paymentStatus : Property[];
 
   constructor() { 
     
@@ -50,6 +53,11 @@ export class SubmitPaymentTransactionsComponent implements OnInit {
     this.processingStatus = [
       {id : 'Y', value : 'Yes' },
       {id : 'N', value : 'No' },
+    ]
+
+    this.paymentStatus = [
+      {id : PaymentStatus.Yes, value : 'Yes' },
+      {id : PaymentStatus.No, value : 'No' },
     ]
   }
 submitPaymentTransaction(newPaymentEntity : PaymentTransaction) : void

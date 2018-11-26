@@ -96,9 +96,13 @@
           </div>
           <div class="col-md-6 row">
               <label for="paymentStatus" class="col-md-5 control-label" style="margin-top:1%">Payment Status</label>
-              <input required type="text" class="form-control col-md-7" name="paymentStatus" [(ngModel)]="paymentEntity.paymentStatus"
+               <select required class="form-control col-md-7" name="paymentStatus" [(ngModel)]="paymentEntity.paymentStatus"
                 #paymentStatusControl="ngModel" [ngClass]="{ 'is-invalid': f.submitted && paymentStatusControl.invalid }">
-              <span class="col-md-5"></span>
+                <option *ngFor="let item of paymentStatus" [value]="item.id">
+                  {{item.value}}
+                </option>
+              </select>
+                <span class="col-md-5"></span>
               <span *ngIf="f.submitted && paymentStatusControl.invalid" class="col-md-7 invalid-feedback">
                 <div *ngIf="paymentStatusControl.errors.required">Payment status is required</div>
               </span>

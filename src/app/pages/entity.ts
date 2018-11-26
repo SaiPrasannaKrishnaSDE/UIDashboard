@@ -81,3 +81,41 @@ export class KYHInfoEntity
     processedByMCO:string;
 }
 
+export class EligibilityEntityType
+{
+    transactionId : Guid;
+    transactionType : string;
+    maidCardNumber : string;
+    caseNumber : number;
+    ssn : number;
+    firstName : string;
+    lastName : string;
+    dateOfBirth : Date;
+    gender : string;
+    address : string;
+    city : string;
+    stateCode : string;
+    zipCode : number;
+    caseCountableIncome : number;
+    programCode : string;
+    statusCode : string;
+    imidCode : string;
+    eligibilityStartDate : Date;
+    eligibilityEndDate : Date;
+    enrollmentStartDate : Date;
+    enrollmentEndDate : Date;
+    issuerId : number;
+    eligibilityType : string;
+    kyhPlanType : string;
+    kyhPremiumPlanCode : string;
+    kyhCopayIndicator : string;
+    kyhPregnancyIndicator : string;
+    kyhIndStartDate : Date;
+    kyhIndEndDate : Date;
+    kyhPremiumAmount : number;
+    kyhPremiumStartDate : Date;
+    kyhPremiumEndDate : Date;
+    processedByMMIS : string;
+    processedByMCO : string;
+    createDate : Date;
+}
