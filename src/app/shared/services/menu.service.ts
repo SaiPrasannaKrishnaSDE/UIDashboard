@@ -81,6 +81,7 @@ export class menuService {
         index.routerLink = this.creatRouterLink(index.path);
         index.routerLink.unshift('/', 'pages');
       }
+      console.log(index);
     })
   }
 
